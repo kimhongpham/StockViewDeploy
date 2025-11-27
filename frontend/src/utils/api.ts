@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Axios instance
 const api = axios.create({
-  baseURL: "http://localhost:8080/api",
+  // baseURL: "http://localhost:8080/api",
+  baseURL: "https://stockviewdeploy.onrender.com/api",
   timeout: 120000,
 });
 
@@ -168,7 +169,8 @@ export const fetchAllAssets = async (): Promise<Asset[]> => {
 
 // Lấy danh sách thị trường (stocks, crypto, ...)
 export async function fetchNewMarketStocks() {
-  const res = await fetch("http://localhost:8080/api/assets/market/stocks/new");
+  // const res = await fetch("http://localhost:8080/api/assets/market/stocks/new");
+  const res = await fetch("https://stockviewdeploy.onrender.com/api/assets/market/stocks/new");
   if (!res.ok) throw new Error("Failed to fetch new market stocks");
   return res.json();
 }
@@ -216,7 +218,8 @@ export async function fetchChange(assetId: string, hours = 168): Promise<ChangeR
 }
 
 // Thêm biến API_URL dùng chung cho watchlist
-const API_URL = "http://localhost:8080/api/users";
+// const API_URL = "http://localhost:8080/api/users";
+const API_URL = "https://stockviewdeploy.onrender.com/api/users";
 
 // ================= Watchlist APIs =================
 export const getWatchlist = async (token: string) => {
@@ -243,7 +246,8 @@ export const removeFromWatchlist = async (symbol: string, token: string) => {
 
 export const searchAssets = async (query: string): Promise<Asset[]> => {
   if (!query.trim()) return [];
-  const res = await fetch(`http://localhost:8080/api/assets/search?query=${encodeURIComponent(query)}`);
+  // const res = await fetch(`http://localhost:8080/api/assets/search?query=${encodeURIComponent(query)}`);
+  const res = await fetch(`https://stockviewdeploy.onrender.com/api/assets/search?query=${encodeURIComponent(query)}`);
   if (!res.ok) throw new Error("Search failed");
   return res.json();
 };

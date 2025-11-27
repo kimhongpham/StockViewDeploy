@@ -70,7 +70,8 @@ const OAuth2RedirectHandler: React.FC = () => {
         (async () => {
           try {
             localStorage.setItem("authToken", token);
-            const meRes = await fetch("http://localhost:8080/api/users/me", {
+            // const meRes = await fetch("http://localhost:8080/api/users/me", {
+            const meRes = await fetch("https://stockviewdeploy.onrender.com/api/users/me", {
               headers: { Authorization: `Bearer ${token}` },
             });
 

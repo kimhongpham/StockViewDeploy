@@ -7,7 +7,8 @@ export default defineConfig({
     port: 5173,
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
+        // target: "http://localhost:8080",
+        target: "https://stockviewdeploy.onrender.com",
         changeOrigin: true,
         secure: false,
       },

@@ -32,7 +32,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     setLoading(true);
 
     try {
-      const loginRes = await fetch("http://localhost:8080/api/auth/login", {
+      // const loginRes = await fetch("http://localhost:8080/api/auth/login", {
+      const loginRes = await fetch("https://stockviewdeploy.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -50,7 +51,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       const token = loginData.token;
       localStorage.setItem("authToken", token);
 
-      const meRes = await fetch("http://localhost:8080/api/users/me", {
+      // const meRes = await fetch("http://localhost:8080/api/users/me", {
+      const meRes = await fetch("https://stockviewdeploy.onrender.com/api/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -93,7 +95,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     const frontendRedirect = encodeURIComponent(
       `${window.location.origin}/auth/oauth2/success`
     );
-    const url = `http://localhost:8080/oauth2/authorization/google?redirect_uri=${frontendRedirect}`;
+    // const url = `http://localhost:8080/oauth2/authorization/google?redirect_uri=${frontendRedirect}`;
+    const url = `https://stockviewdeploy.onrender.com/oauth2/authorization/google?redirect_uri=${frontendRedirect}`;
     window.location.href = url;
   };
 

@@ -13,7 +13,8 @@ const ProfilePage: React.FC = () => {
   useEffect(() => {
     if (!authUser?.token) return;
 
-    fetch("http://localhost:8080/api/users/me", {
+    // fetch("http://localhost:8080/api/users/me", {
+    fetch("https://stockviewdeploy.onrender.com/api/users/me", {
       headers: {
         Authorization: `Bearer ${authUser.token}`,
       },
@@ -39,7 +40,8 @@ const ProfilePage: React.FC = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8080/api/users/me", {
+      // const res = await fetch("http://localhost:8080/api/users/me", {
+      const res = await fetch("https://stockviewdeploy.onrender.com/api/users/me", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +61,8 @@ const ProfilePage: React.FC = () => {
       if (!res.ok) throw new Error(result.message || "Cập nhật thất bại");
 
       // Lấy lại thông tin mới
-      const meRes = await fetch("http://localhost:8080/api/users/me", {
+      // const meRes = await fetch("http://localhost:8080/api/users/me", {
+      const meRes = await fetch("https://stockviewdeploy.onrender.com/api/users/me", {
         headers: { Authorization: `Bearer ${authUser.token}` },
       });
       const meData = await meRes.json();
